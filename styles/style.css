@@ -115,8 +115,8 @@ ol {
 }
 
 .search-form__textfield {
-  width: 225px;
-  height: 27px;
+  min-width: 225px;
+  min-height: 27px;
   appearance: none;
   background-color: transparent;
   border-block: solid 1px white;
@@ -136,12 +136,7 @@ ol {
   outline: none;
 }
 
-.search-form__textfield:focus-visible {
-  border: none;
-  outline: none;
-}
-
-.search-form__label:has(.search-form__textfield:focus-visible) {
+.search-form__label:has(:focus-visible) {
   outline: solid 1px white;
   outline-offset: 2px;
 }
@@ -162,11 +157,12 @@ ol {
 }
 
 .search-form__pseudo-checkbox {
-  display: inline-block;
-  width: 19px;
-  height: 19px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  block-size: 19px;
+  inline-size: 19px;
   padding: 1px;
-  vertical-align: middle;
   background-color: transparent;
   background-clip: content-box;
   border: solid 1px white;
@@ -174,11 +170,6 @@ ol {
 
 .search-form__checkbox:checked + .search-form__pseudo-checkbox {
   background-color: white;
-}
-
-.search-form__label:has(.search-form__checkbox:focus-visible) {
-  outline: solid 1px white;
-  outline-offset: 1px;
 }
 
 .button {
@@ -240,12 +231,6 @@ ol {
   block-size: 298px;
 }
 
-.content__details {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  gap: 26px;
-}
 
 .content__list-item:not(:last-child) {
   margin-bottom: 30px;
@@ -266,8 +251,7 @@ ol {
 }
 
 .content__video-card-title {
-  margin-block-end: 6px;
-  overflow-wrap: anywhere;
+  max-inline-size: 180px;
   color: white;
   font-family: Oswald, sans-serif;
   font-weight: 700;
@@ -275,22 +259,29 @@ ol {
   font-style: normal;
   line-height: 1;
   text-transform: uppercase;
-  hyphens: auto;
+  text-overflow: ellipsis; 
+  white-space: nowrap; 
+  overflow: hidden;
 }
 
 .content__video-card-description {
+  max-inline-size: 180px;
   color: #fff;
-  font-family: Fira Sans Condensed;
+  font-family: "Fira Sans Condensed", sans-serif;
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
   line-height: 16.2px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .content__video-card-thumbnail {
   width: 194px;
   height: 103px;
-  /* margin-inline-end: -4px; */
+  object-fit: cover;
+  object-position: center;
 }
 
 .content__card-link {
@@ -307,18 +298,16 @@ ol {
   margin: 2px;
 }
 
+.content__card-link:focus {
+  outline: none;
+}
 .content__list-item:has(.content__card-link:focus-visible) {
   outline: solid 1px white;
 }
 
 .content__card-link_current,
-.content__card-link:active,
-.content__list-item:has(.content__card-link:active) {
+.content__card-link:active {
   background: #545050;
-}
-
-.content__card-link:focus {
-  outline: none;
 }
 
 .more-button {

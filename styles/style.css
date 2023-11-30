@@ -179,6 +179,7 @@ ol {
   color: inherit;
   font-family: inherit;
   font-size: 18px;
+  font-weight: 700;
   padding-block: 6px;
   cursor: pointer;
 }
